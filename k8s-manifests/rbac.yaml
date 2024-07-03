@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: endpoint-watcher
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["endpoints"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: watch-endpoints
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: dispatch-echo
+  namespace: default
+roleRef:
+  kind: Role
+  name: endpoint-watcher
+  apiGroup: rbac.authorization.k8s.io

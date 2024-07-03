@@ -1,0 +1,7 @@
+Dockerfile
+k8s-manifests/
+proto/
+buf.gen.yaml
+buf.yaml
+.github
+.vscode

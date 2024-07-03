@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dispatch-echo
+spec:
+  selector:
+    app: dispatch-echo
+  clusterIP: None
+  ports:
+    - protocol: TCP
+      port: 50051
+      targetPort: 50051
